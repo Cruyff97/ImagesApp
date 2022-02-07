@@ -1,0 +1,31 @@
+<div class="search-container">
+  <img class="img-bg" src="{{bg}}" alt="" srcset="">
+  <h1 class="title-center"><strong>Search images from Unsplash</strong></h1>
+  <div class="div-search">
+    <form>
+      <mat-form-field class="example-form-field" appearance="fill">
+        <mat-label>Search</mat-label>
+        <input
+          autocomplete="off"
+          type="text"
+          matInput
+          placeholder="Search-images"
+          name="search"
+          [(ngModel)]="search"
+        />
+        <button mat-raised-button color="primary" (click)="getImg(search)">
+          <mat-icon>search</mat-icon>
+        </button>
+      </mat-form-field>
+    </form>
+  </div>
+</div>
+<mat-grid-list [cols]="isMobile ? 2 : 3" rowHeight="2:1">
+  <ng-container *ngIf="result">
+    <mat-grid-tile *ngFor="let div of result[0]" class="img">
+      <a target="_BLANK" href="{{ div.links.html }}">
+        <img class="img-res" src="{{ div.urls.small }}" alt="" />
+      </a>
+    </mat-grid-tile>
+  </ng-container>
+</mat-grid-list>
