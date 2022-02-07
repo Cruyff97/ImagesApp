@@ -11,11 +11,11 @@ export class GetImgService {
   constructor(public http: HttpClient) {}
   public searchImg(str: String) {
     return this.http.get<ImgInterface>(
-      `https://api.unsplash.com/search/photos?client_id=SET_ID&orientation=landscape&page=2&per_page=21&query=${str}?`
+      `https://api.unsplash.com/search/photos?client_id=API_KEY&orientation=landscape&page=2&per_page=21&query=${str}?`
     );
   }
 
   public Imgbg(){
-    return this.http.get(`https://api.unsplash.com/photos?client_id=SET_ID&random`)
+    return this.http.get(`https://api.unsplash.com/photos?client_id=API_KEY&random`)
   }
 }
