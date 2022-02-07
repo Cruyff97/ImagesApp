@@ -24,7 +24,7 @@ export class SearchBarComponent implements OnInit {
     this.GetImg.searchImg(search).subscribe((response: any) => {
       this.result = Array.of(response.results);
 
-      console.log(this.result[0].length)      
+      console.log(this.result[0])      
     });
   }
   ngOnInit(): void {

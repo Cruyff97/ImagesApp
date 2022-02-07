@@ -31,3 +31,17 @@ button {
 .mat-form-field{
   width: 40vw;
 }
+.title-img{
+  height: 20px;
+position: absolute;
+z-index: 100;
+margin-top: 14vw;
+background-color: black;
+opacity: 0.4;
+width: 90%;
+transition:ease-in .2s;
+}
+.title-img:hover{
+opacity: 0.8;
+
+}

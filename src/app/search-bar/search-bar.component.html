@@ -22,7 +22,8 @@
 </div>
 <mat-grid-list [cols]="isMobile ? 2 : 3" rowHeight="2:1">
   <ng-container *ngIf="result">
-    <mat-grid-tile *ngFor="let div of result[0]" class="img">
+    <mat-grid-tile  *ngFor="let div of result[0]" class="img">
+      <p class="title-img">{{div.description}}</p>
       <a target="_BLANK" href="{{ div.links.html }}">
         <img class="img-res" src="{{ div.urls.small }}" alt="" />
       </a>

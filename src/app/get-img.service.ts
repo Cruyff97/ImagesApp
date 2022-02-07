@@ -11,7 +11,7 @@ export class GetImgService {
   constructor(public http: HttpClient) {}
   public searchImg(str: String) {
     return this.http.get<ImgInterface>(
-      `https://api.unsplash.com/search/photos?client_id=API_KEY&orientation=landscape&page=2&per_page=21&query=${str}?`
+      `https://api.unsplash.com/search/photos?client_id=API_KEY&orientation=landscape&page=2&per_page=42&query=${str}?`
     );
   }
 
