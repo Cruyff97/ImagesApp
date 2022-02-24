@@ -1,4 +1,4 @@
-import { GetImgService } from './../get-img.service';
+import { GetImgService } from '../get-img.service';
 
 import { Component, OnInit } from '@angular/core';
 import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
@@ -8,8 +8,28 @@ import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
   styleUrls: ['./search-bar.component.css'],
 })
 export class SearchBarComponent implements OnInit {
+  orientations: any = [
+    { value: 'landscape', viewValue: 'landscape' },
+    { value: 'portrait', viewValue: 'portrait' },
+    { value: 'squarish', viewValue: 'squarish' },
+  ];
+  colors = [
+    { value: 'black_and_white', viewValue: 'black_and_white' },
+    { value: 'black', viewValue: 'black' },
+    { value: 'white', viewValue: 'white' },
+    { value: 'yellow', viewValue: 'yellow' },
+    { value: 'orange', viewValue: 'orange' },
+    { value: 'red', viewValue: 'red' },
+    { value: 'purple', viewValue: 'purple' },
+    { value: 'magenta', viewValue: 'magenta' },
+    { value: 'green', viewValue: 'green' },
+    { value: 'teal', viewValue: 'teal' },
+    { value: 'blue', viewValue: 'blue' },
+  ];
   public isMobile: boolean = false;
-  search: String = '';
+  selectedOrientation: any;
+  selectedColor: any;
+  search: string = '';
   result?: any;
   bg?: string;
   constructor(
@@ -20,17 +40,16 @@ export class SearchBarComponent implements OnInit {
       this.isMobile = result.matches;
     });
   }
-  getImg(search: String): void {
-    this.GetImg.searchImg(search).subscribe((response: any) => {
-      this.result = Array.of(response.results);
-
-      console.log(this.result[0])      
-    });
+  getImg(search: string, orientation: any, colors: any): void {
+    this.GetImg.searchImg(search, orientation, colors).subscribe(
+      (response: any) => {
+        this.result = Array.of(response.results);
+      }
+    );
   }
   ngOnInit(): void {
-    this.GetImg.Imgbg().subscribe((response:any)=>{
-      this.bg= response[Math.floor(Math.random()*12)].urls.regular;
-      console.log(this.bg);
-    })
+    this.GetImg.Imgbg().subscribe((response: any) => {
+      this.bg = response[Math.floor(Math.random() * 12)].urls.regular;
+    });
   }
 }

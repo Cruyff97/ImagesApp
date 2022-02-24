@@ -19,29 +19,32 @@ button {
 .title-center {
   margin-top: 40px;
 }
-.mat-raised-button{
-    border-radius: 40px;
+.mat-raised-button {
+  border-radius: 40px;
 }
-.img-bg{
+.img-bg {
   position: absolute;
   opacity: 0.3;
   height: 100vh;
   width: 100vw;
 }
-.mat-form-field{
+.mat-form-field {
   width: 40vw;
 }
-.title-img{
+.title-img {
   height: 20px;
-position: absolute;
-z-index: 100;
-margin-top: 14vw;
-background-color: black;
-opacity: 0.4;
-width: 90%;
-transition:ease-in .2s;
+  position: absolute;
+  z-index: 100;
+  margin-top: 14vw;
+  background-color: black;
+  opacity: 0.4;
+  width: 90%;
+  transition: ease-in 0.2s;
 }
-.title-img:hover{
-opacity: 0.8;
-
+.title-img:hover {
+  opacity: 0.8;
+}
+form {
+  display: flex;
+  flex-direction: column;
 }
