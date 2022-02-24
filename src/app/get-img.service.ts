@@ -14,10 +14,4 @@ export class GetImgService {
       `https://api.unsplash.com/search/photos?client_id=zu3UP0l7NAigsK4HPLI8MsSSVhaPFtdAPwxmk8jHN04&orientation=${orient}&color=${color}&page=2&per_page=42&query=${str}?`
     );
   }
-
-  public Imgbg() {
-    return this.http.get(
-      `https://api.unsplash.com/photos?client_id=zu3UP0l7NAigsK4HPLI8MsSSVhaPFtdAPwxmk8jHN04&random`
-    );
-  }
 }

@@ -47,9 +47,6 @@ export class SearchBarComponent implements OnInit {
       }
     );
   }
-  ngOnInit(): void {
-    this.GetImg.Imgbg().subscribe((response: any) => {
-      this.bg = response[Math.floor(Math.random() * 12)].urls.regular;
-    });
-  }
+  ngOnInit() {
+}
 }
