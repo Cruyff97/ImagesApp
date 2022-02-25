@@ -43,6 +43,8 @@ form {
   flex-direction: column;
 }
 .error{
+  margin: 10px 10px 10px 10px;
+
   display: flex;
   justify-content: center;
   color:#ff0000 ;
