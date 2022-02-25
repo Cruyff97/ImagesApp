@@ -8,10 +8,7 @@ import { ImgInterface } from './interface/img-interface';
   providedIn: 'root',
 })
 export class GetImgService {
-async callLambdaFunction() {
-  return await fetch("/.netlify/functions/lambda");
-  }
-  
+
 API_URL = process.env['API_KEY_CT']
   results?: ImgInterface;
   url?: string;
