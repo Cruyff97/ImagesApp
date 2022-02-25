@@ -8,7 +8,7 @@ import { ImgInterface } from './interface/img-interface';
   providedIn: 'root',
 })
 export class GetImgService {
-API_URL = process.env['API_URL']
+API_URL = process.env['API_KEY_CT']
   results?: ImgInterface;
   url?: string;
   constructor(private http: HttpClient) {}
