@@ -1,3 +1,4 @@
+import { environment } from './../environments/environment.prod';
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { catchError, map, throwError } from 'rxjs';
@@ -7,7 +8,7 @@ import { ImgInterface } from './interface/img-interface';
   providedIn: 'root',
 })
 export class GetImgService {
-  apiKey = process.env['APIKEY']
+  apiKey = environment.ApiKey
   results?: ImgInterface;
   url?: string;
   constructor(private http: HttpClient) {}
