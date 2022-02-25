@@ -3,7 +3,7 @@ import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { catchError, map, throwError } from 'rxjs';
 import { ImgInterface } from './interface/img-interface';
-
+import { processEnv } from 'netlify/functions/processAPI/processAPI';
 @Injectable({
   providedIn: 'root',
 })
@@ -14,7 +14,7 @@ API_URL = process.env['API_KEY_CT']
   url?: string;
   constructor(private http: HttpClient) {}
   public searchImg(str: string, orient: string, color: string) {
-
+    processEnv();
     return this.http.get<ImgInterface>(
       `https://api.unsplash.com/search/photos?client_id=${this.API_URL}&orientation=${orient}&color=${color}&page=2&per_page=42&query=${str}?`
     ) .pipe(
