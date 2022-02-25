@@ -42,3 +42,8 @@ form {
   display: flex;
   flex-direction: column;
 }
+.error{
+  display: flex;
+  justify-content: center;
+  color:#ff0000 ;
+}

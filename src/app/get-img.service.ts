@@ -1,5 +1,6 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { catchError, map, throwError } from 'rxjs';
 import { ImgInterface } from './interface/img-interface';
 
 @Injectable({
@@ -12,6 +13,22 @@ export class GetImgService {
   public searchImg(str: string, orient: string, color: string) {
     return this.http.get<ImgInterface>(
       `https://api.unsplash.com/search/photos?client_id=zu3UP0l7NAigsK4HPLI8MsSSVhaPFtdAPwxmk8jHN04&orientation=${orient}&color=${color}&page=2&per_page=42&query=${str}?`
+    ) .pipe(
+      catchError(this.handleError)
     );
+}
+private handleError(error: HttpErrorResponse) {
+  if (error.status === 0) {
+  
+    console.error('An error occurred:', error.error);
+  } else {
+    // The backend returned an unsuccessful response code.
+    // The response body may contain clues as to what went wrong.
+    console.error(
+      `Backend returned code ${error.status}, body was: `, error.error.errors);
   }
+  // Return an observable with a user-facing error message.
+  return throwError(() => new Error(error.error.errors));
+}
+
 }

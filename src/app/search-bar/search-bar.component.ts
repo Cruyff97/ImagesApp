@@ -8,23 +8,26 @@ import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
   styleUrls: ['./search-bar.component.css'],
 })
 export class SearchBarComponent implements OnInit {
+  errorMessageServ!: string;
+  errorMessageClient!: string;
+  loading!: boolean;
   orientations: any = [
     { value: 'landscape', viewValue: 'landscape' },
     { value: 'portrait', viewValue: 'portrait' },
     { value: 'squarish', viewValue: 'squarish' },
   ];
   colors = [
-    { value: 'black_and_white', viewValue: 'black_and_white' },
-    { value: 'black', viewValue: 'black' },
-    { value: 'white', viewValue: 'white' },
-    { value: 'yellow', viewValue: 'yellow' },
-    { value: 'orange', viewValue: 'orange' },
-    { value: 'red', viewValue: 'red' },
-    { value: 'purple', viewValue: 'purple' },
-    { value: 'magenta', viewValue: 'magenta' },
-    { value: 'green', viewValue: 'green' },
-    { value: 'teal', viewValue: 'teal' },
-    { value: 'blue', viewValue: 'blue' },
+    { value: 'black_and_white', viewValue: 'Black and White' },
+    { value: 'black', viewValue: 'Black' },
+    { value: 'white', viewValue: 'White' },
+    { value: 'yellow', viewValue: 'Yellow' },
+    { value: 'orange', viewValue: 'Orange' },
+    { value: 'red', viewValue: 'Red' },
+    { value: 'purple', viewValue: 'Purple' },
+    { value: 'magenta', viewValue: 'Magenta' },
+    { value: 'green', viewValue: 'Green' },
+    { value: 'teal', viewValue: 'Teal' },
+    { value: 'blue', viewValue: 'Blue' },
   ];
   public isMobile: boolean = false;
   selectedOrientation: any;
@@ -40,13 +43,22 @@ export class SearchBarComponent implements OnInit {
       this.isMobile = result.matches;
     });
   }
-  getImg(search: string, orientation: any, colors: any): void {
-    this.GetImg.searchImg(search, orientation, colors).subscribe(
-      (response: any) => {
-        this.result = Array.of(response.results);
-      }
-    );
+  getImg(search: string, orientation: string, colors: string): void {
+    this.GetImg.searchImg(search, orientation, colors).subscribe({
+      next: (x) => {
+        this.result = Array.of(x.results);
+        if(this.result[0].length==0){
+          this.errorMessageClient= 'Nothing found, try to search something else'
+        }
+        
+      },
+      error: (x) => {
+        this.errorMessageServ = x;
+      },
+      complete: () => {
+        this.errorMessageServ = '';
+      },
+    });
   }
-  ngOnInit() {
-}
+  ngOnInit() {}
 }

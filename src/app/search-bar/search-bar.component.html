@@ -6,6 +6,7 @@
       <mat-form-field class="example-form-field" appearance="fill">
         <mat-label>Orientation</mat-label>
         <mat-select
+        required
           #orientation="ngModel"
           [(ngModel)]="selectedOrientation"
           name="orientation"
@@ -22,7 +23,7 @@
       <mat-form-field class="example-form-field" appearance="fill">
         <mat-label>Colors</mat-label>
         <mat-select
-          required="Insert color preference"
+          required
           [(ngModel)]="selectedColor"
           name="colors"
         >
@@ -35,6 +36,7 @@
       <mat-form-field class="example-form-field" appearance="fill">
         <mat-label>Search</mat-label>
         <input
+        required
           autocomplete="off"
           type="text"
           matInput
@@ -62,3 +64,5 @@
     </mat-grid-tile>
   </ng-container>
 </mat-grid-list>
+<p class="error">{{errorMessageClient}}</p>
+<p class="error">{{errorMessageServ}}</p>

@@ -1,4 +1,5 @@
 export interface ImgInterface {
+  results: any;
   alt_description: string;
   blur_hash: string;
   categories: [];
