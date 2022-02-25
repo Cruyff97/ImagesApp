@@ -14,7 +14,7 @@ export class GetImgService {
   url?: string;
   constructor(private http: HttpClient) {}
   public searchImg(str: string, orient: string, color: string) {
-    const API_URL= process.env['API_KEY_CT']
+    const API_URL= process.env.API_KEY_CT
     return this.http.get<ImgInterface>(
       `https://api.unsplash.com/search/photos?client_id=${API_URL}&orientation=${orient}&color=${color}&page=2&per_page=42&query=${str}?`
     ) .pipe(
