@@ -9,14 +9,14 @@ import { processEnv } from 'netlify/functions/processAPI/processAPI';
 })
 export class GetImgService {
 
-API_URL = process.env['API_KEY_CT']
+
   results?: ImgInterface;
   url?: string;
   constructor(private http: HttpClient) {}
   public searchImg(str: string, orient: string, color: string) {
-    processEnv();
+    const API_URL= processEnv();
     return this.http.get<ImgInterface>(
-      `https://api.unsplash.com/search/photos?client_id=${this.API_URL}&orientation=${orient}&color=${color}&page=2&per_page=42&query=${str}?`
+      `https://api.unsplash.com/search/photos?client_id=${API_URL}&orientation=${orient}&color=${color}&page=2&per_page=42&query=${str}?`
     ) .pipe(
       catchError(this.handleError)
     );
