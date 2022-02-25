@@ -47,3 +47,6 @@ form {
   justify-content: center;
   color:#ff0000 ;
 }
+mat-grid-list{
+  margin: 15px;
+}
