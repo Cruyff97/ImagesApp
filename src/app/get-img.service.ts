@@ -7,12 +7,13 @@ import { ImgInterface } from './interface/img-interface';
   providedIn: 'root',
 })
 export class GetImgService {
+  apiKey = process.env['APIKEY']
   results?: ImgInterface;
   url?: string;
-  constructor(public http: HttpClient) {}
+  constructor(private http: HttpClient) {}
   public searchImg(str: string, orient: string, color: string) {
     return this.http.get<ImgInterface>(
-      `https://api.unsplash.com/search/photos?client_id=zu3UP0l7NAigsK4HPLI8MsSSVhaPFtdAPwxmk8jHN04&orientation=${orient}&color=${color}&page=2&per_page=42&query=${str}?`
+      `https://api.unsplash.com/search/photos?client_id=${this.apiKey}&orientation=${orient}&color=${color}&page=2&per_page=42&query=${str}?`
     ) .pipe(
       catchError(this.handleError)
     );
