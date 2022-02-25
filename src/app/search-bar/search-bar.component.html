@@ -64,5 +64,5 @@
     </mat-grid-tile>
   </ng-container>
 </mat-grid-list>
-<p class="error">{{errorMessageClient}}</p>
-<p class="error">{{errorMessageServ}}</p>
+<p *ngIf="errorMessageClient" class="error">{{errorMessageClient}}</p>
+<p *ngIf="errorMessageServ" class="error">{{errorMessageServ}}</p>
