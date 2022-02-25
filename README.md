@@ -11,4 +11,4 @@ A small application in Angular that fetches images from Unsplash API.
 5. Run "npm install".
 6. Run your application with "ng serve".
 # Link to try 
-https://images-app-ggpb9njx9-cruyff97.vercel.app/
+https://images-app-i2ugwmvcw-cruyff97.vercel.app/
